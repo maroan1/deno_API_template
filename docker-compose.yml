@@ -1,0 +1,9 @@
+services:
+  swagger_ui:
+    image: swaggerapi/swagger-ui
+    ports:
+      - 8105:8080
+    volumes:
+      - ./openapi.yaml:/openapi.yaml
+    environment:
+      SWAGGER_JSON: /openapi_v1.yaml
