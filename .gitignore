@@ -1,3 +1,4 @@
 .idea
 .env
-
+cov_profile
+data

@@ -1,19 +1,29 @@
-import { Application, config, Router, Context, oakCors } from '../deps.ts';
-import { errorHandler, loggerMiddleware, timingMiddleware, requestIdMiddleware } from "./middlewares/middlewares.ts";
-import router from './router.ts';
+import "https://deno.land/std@0.170.0/dotenv/load.ts";
+import { Application, Context, oakCors, Router } from "../deps.ts";
+import {
+  errorHandler,
+  loggerMiddleware,
+  requestIdMiddleware,
+  timingMiddleware,
+} from "./middlewares/middlewares.ts";
+import router from "./router.ts";
+import initMongo from "./mongoDb/initMongo.ts";
+import initPostgres from "./postgreSQL/initPostgres.ts";
 
-const { PORT } = await config();
-
+if (Deno.env.get("DATABASE") === "MONGODB") {
+  await initMongo();
+} else if (Deno.env.get("DATABASE") === "POSTGRES") {
+  await initPostgres();
+}
 
 const app = new Application();
 
 app.use(oakCors());
 
 const basicRouter = new Router();
-basicRouter.get('/basic', (ctx: Context) => {
-    ctx.response.body = 'Hello World! This is a basic route.';
+basicRouter.get("/basic", (ctx: Context) => {
+  ctx.response.body = "Hello World! This is a basic route.";
 });
-
 
 app.use(loggerMiddleware);
 app.use(errorHandler);
@@ -25,6 +35,4 @@ app.use(basicRouter.allowedMethods());
 
 router.init(app);
 
-
-
-await app.listen({ port: +PORT});
+await app.listen({ port: +(Deno?.env?.get("PORT") || 8000) });

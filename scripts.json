@@ -2,20 +2,34 @@
   "$schema": "https://deno.land/x/denon/schema.json",
 
   "scripts": {
-      "start": {
-        "cmd": "deno run --allow-env --allow-net --allow-read src/app.ts",
-        "desc": "run my src/app.ts file",
-        "tsconfig": "tsconfig.json"
-      },
-      "swaggerDoc": {
-        "cmd": "docker compose up",
-        "desc": "generate api doc"
-      }
+    "start": {
+      "cmd": "deno run --allow-env --allow-net --allow-read src/app.ts",
+      "desc": "run my src/app.ts file",
+      "tsconfig": "tsconfig.json"
     },
+    "cache": {
+      "cmd": "deno cache deps.ts",
+      "desc": "cache my src/app.ts file"
+    },
+    "swaggerDoc": {
+      "cmd": "docker compose up",
+      "desc": "generate api doc"
+    }
+  },
 
   "logger": {
     "fullscreen": false,
     "quiet": false,
     "debug": true
+  },
+
+  "watcher": {
+    "interval": 1000,
+    "paths": [
+      "src"
+    ],
+    "exts": [
+      "ts"
+    ]
   }
 }

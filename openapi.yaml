@@ -20,7 +20,7 @@ servers:
             default: v1
             description: API base path
 tags:
-    - name: test
+    - name: example
       description: Test operations
     - name: auth
       description: Authentication operations
@@ -30,10 +30,10 @@ paths:
     /test:
         get:
             tags:
-                - test
+                - example
             summary: Test operation
             description: Test operation description
-            operationId: test
+            operationId: example
             responses:
                 '200':
                     description: OK

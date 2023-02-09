@@ -1,5 +1,5 @@
-import { Context, State, Status } from '../../deps.ts';
-import type { Err } from '../ts/interfaces/error.interfaces.ts';
+import { Context, State, Status } from "../../deps.ts";
+import type { Err } from "../ts/interfaces/error.interfaces.ts";
 
 /**
  * Throws Error with provided params
@@ -7,8 +7,8 @@ import type { Err } from '../ts/interfaces/error.interfaces.ts';
  * @throws Error Throws Error
  */
 export const throwError = (options: Err): Error => {
-    throw options;
-}
+  throw options;
+};
 
 /**
  * Error Handler Middleware function
@@ -17,16 +17,16 @@ export const throwError = (options: Err): Error => {
  * @returns {Promise<void>}
  */
 export const errorHandler = async (
-    ctx: Context<State, Record<string, unknown>>,
-    next: () => Promise<unknown>,
+  ctx: Context<State, Record<string, unknown>>,
+  next: () => Promise<unknown>,
 ): Promise<void> => {
-    try {
-        await next();
-    } catch (err) {
-        const { message, name, path, type } = err;
-        const status = err.status || err.statusCode || Status.InternalServerError;
+  try {
+    await next();
+  } catch (err) {
+    const { message, name, path, type } = err;
+    const status = err.status || err.statusCode || Status.InternalServerError;
 
-        ctx.response.status = status;
-        ctx.response.body = { message, name, path, type, status };
-    }
+    ctx.response.status = status;
+    ctx.response.body = { message, name, path, type, status };
+  }
 };

@@ -1,12 +1,17 @@
 {
   "compilerOptions": {
-
+    "target": "es2017",
+    "module": "esnext"
   },
   "exclude": [
     "node_modules",
     "build",
     ".idea",
     ".vscode",
-    ".git"
+    ".git",
+    "gen",
+    "dist",
+    "coverage",
+    "data"
   ]
 }
