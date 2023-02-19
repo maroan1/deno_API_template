@@ -2,24 +2,44 @@ import { assertEquals, describe, it } from "../../../devDeps.ts";
 import exampleService from "./example.service.ts";
 describe("Example", () => {
   describe("sum", () => {
-    it("should return the sum of two numbers", () => {
-      const result1 = exampleService.sum(1, 2);
-      const result2 = exampleService.sum(2, -20);
-      const result3 = exampleService.sum(0, 0);
-      const result4 = exampleService.sum(0, 1.5);
-      const result5 = exampleService.sum(1.5, 0);
-      const result6 = exampleService.sum(1.5, 1.5);
-      const result7 = exampleService.sum(-1.5, -1.5);
-      const result8 = exampleService.sum(160, 68);
+    it('adds two positive numbers', () => {
+      const expected = 5;
 
-      assertEquals(result1, 3);
-      assertEquals(result2, -18);
-      assertEquals(result3, 0);
-      assertEquals(result4, 1.5);
-      assertEquals(result5, 1.5);
-      assertEquals(result6, 3);
-      assertEquals(result7, -3);
-      assertEquals(result8, 228);
+      const actual = exampleService.sum(2, 3);
+
+      assertEquals(actual, expected);
+    });
+
+    it('adds two negative numbers', () => {
+      const expected = -5;
+
+      const actual = exampleService.sum(-2, -3);
+
+      assertEquals(actual, expected);
+    });
+
+    it('adds a positive and a negative number', () => {
+      const expected = -1;
+
+      const actual = exampleService.sum(-2, 1);
+
+      assertEquals(actual, expected);
+    });
+
+    it('adds two decimal numbers', () => {
+      const expected = 0.5;
+
+      const actual = exampleService.sum(0.2, 0.3);
+
+      assertEquals(actual, expected);
+    });
+
+    it('adds a number and zero', () => {
+      const expected = 2;
+
+      const actual = exampleService.sum(2, 0);
+
+      assertEquals(actual, expected);
     });
   });
 });

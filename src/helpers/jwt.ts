@@ -1,3 +1,5 @@
+import "https://deno.land/std@0.170.0/dotenv/load.ts";
+
 import {
   config,
   create,
@@ -17,7 +19,7 @@ const {
   JWT_REFRESH_TOKEN_SECRET,
   JWT_ACCESS_TOKEN_EXP,
   JWT_REFRESH_TOKEN_EXP,
-} = await config();
+} = Deno.env.toObject();
 
 const header: Header = {
   alg: "HS256",
@@ -28,7 +30,7 @@ const getAuthToken = async (user: UserWithRoles): Promise<string> => {
   const payload: Payload = {
     iss: "deno-api",
     id: user.id,
-    name: user.name,
+    name: user.username,
     email: user.email,
     roles: user.roles,
     exp: getNumericDate(parseInt(JWT_ACCESS_TOKEN_EXP)),
