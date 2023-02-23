@@ -1,7 +1,6 @@
-import "https://deno.land/std@0.170.0/dotenv/load.ts";
+import "https://deno.land/std@0.177.0/dotenv/load.ts";
 
 import {
-  config,
   create,
   getNumericDate,
   Header,

@@ -13,9 +13,8 @@ export type {
   State,
 } from "https://deno.land/x/oak@v11.1.0/mod.ts";
 export { oakCors } from "https://deno.land/x/cors@v1.2.2/mod.ts";
-export { config } from "https://deno.land/std@0.171.0/dotenv/mod.ts";
-export { v4 } from "https://deno.land/std@0.171.0/uuid/mod.ts";
-export { generate } from "https://deno.land/std@0.171.0/uuid/v1.ts";
+export { v4 } from "https://deno.land/std@0.177.0/uuid/mod.ts";
+export { generate } from "https://deno.land/std@0.177.0/uuid/v1.ts";
 export { Logger };
 export {
   create,
@@ -24,7 +23,7 @@ export {
 } from "https://deno.land/x/djwt@v2.8/mod.ts";
 export type { Header, Payload } from "https://deno.land/x/djwt@v2.8/mod.ts";
 export { Bson, MongoClient, ObjectId, } from "https://deno.land/x/mongo@v0.31.1/mod.ts";
-export { z } from "https://deno.land/x/zod@v3.20.2/mod.ts";
+export { z } from "https://deno.land/x/zod@v3.20.5/mod.ts";
 export { Client, Pool, Transaction } from "https://deno.land/x/postgres@v0.17.0/mod.ts"
 export type { QueryArguments } from "https://deno.land/x/postgres@v0.17.0/query/query.ts";
 export * as bcrypt from "https://deno.land/x/bcrypt@v0.4.1/mod.ts";
