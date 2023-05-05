@@ -1,4 +1,4 @@
-import "https://deno.land/std@0.177.0/dotenv/load.ts";
+import "https://deno.land/std@0.178.0/dotenv/load.ts";
 import { Application, Context, oakCors, Router } from "../deps.ts";
 import {
   errorHandler,

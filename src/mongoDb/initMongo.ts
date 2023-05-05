@@ -1,7 +1,8 @@
-import {User} from "./models/user.model.ts";
-import {hashPassword} from "../helpers/password.ts";
+import UserCollection from "./models/user.model.ts";
+import { hashPassword } from "../helpers/password.ts";
 
 export default async () => {
+  const User = await UserCollection.getCollection();
   let password = Deno.env.get("ADMIN_PASSWORD") || "admin";
   password = await hashPassword(password);
 
@@ -13,6 +14,6 @@ export default async () => {
     created_at: new Date(),
   };
   const count = await User.countDocuments();
-  console.log('COUNT', count);
+  console.log("COUNT", count);
   if (!count) await User.insertOne(user);
-}
+};

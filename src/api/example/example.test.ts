@@ -2,7 +2,7 @@ import { assertEquals, describe, it } from "../../../devDeps.ts";
 import exampleService from "./example.service.ts";
 describe("Example", () => {
   describe("sum", () => {
-    it('adds two positive numbers', () => {
+    it("adds two positive numbers", () => {
       const expected = 5;
 
       const actual = exampleService.sum(2, 3);
@@ -10,7 +10,7 @@ describe("Example", () => {
       assertEquals(actual, expected);
     });
 
-    it('adds two negative numbers', () => {
+    it("adds two negative numbers", () => {
       const expected = -5;
 
       const actual = exampleService.sum(-2, -3);
@@ -18,7 +18,7 @@ describe("Example", () => {
       assertEquals(actual, expected);
     });
 
-    it('adds a positive and a negative number', () => {
+    it("adds a positive and a negative number", () => {
       const expected = -1;
 
       const actual = exampleService.sum(-2, 1);
@@ -26,7 +26,7 @@ describe("Example", () => {
       assertEquals(actual, expected);
     });
 
-    it('adds two decimal numbers', () => {
+    it("adds two decimal numbers", () => {
       const expected = 0.5;
 
       const actual = exampleService.sum(0.2, 0.3);
@@ -34,7 +34,7 @@ describe("Example", () => {
       assertEquals(actual, expected);
     });
 
-    it('adds a number and zero', () => {
+    it("adds a number and zero", () => {
       const expected = 2;
 
       const actual = exampleService.sum(2, 0);

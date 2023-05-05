@@ -1,6 +1,11 @@
-import {Pool, QueryArguments} from "../../deps.ts";
+import { Pool, QueryArguments } from "../../deps.ts";
 
-const pool = new Pool(Deno.env.get("POSTGRES_URI") || "postgres://root:root@localhost:5432/postgres", 10, true);
+const pool = new Pool(
+  Deno.env.get("POSTGRES_URI") ||
+    "postgres://root:root@localhost:5432/postgres",
+  10,
+  true,
+);
 
 async function runQuery<T>(query: string, args?: QueryArguments) {
   const client = await pool.connect();
@@ -18,4 +23,4 @@ async function runQuery<T>(query: string, args?: QueryArguments) {
   return result;
 }
 
-export { runQuery, pool };
+export { pool, runQuery };

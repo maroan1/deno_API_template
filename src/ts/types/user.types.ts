@@ -1,7 +1,7 @@
-import {ObjectId} from "../../../deps.ts";
+import { ObjectId } from "../../../deps.ts";
 
 export type User = {
-  _id?: ObjectId
+  _id?: ObjectId;
   id?: number;
   username: string;
   password: string;

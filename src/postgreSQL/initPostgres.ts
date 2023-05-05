@@ -1,10 +1,10 @@
 import { pool } from "./postgres.db.ts";
-import {hashPassword} from "../helpers/password.ts";
+import { hashPassword } from "../helpers/password.ts";
 // import {getUser} from "../api/user/repository/user.postgres.repository.ts";
 
 const init = async () => {
   const client = await pool.connect();
-  const transaction = await client.createTransaction('init');
+  const transaction = await client.createTransaction("init");
   const username = Deno.env.get("INIT_USER") || "admin";
   const email = Deno.env.get("INIT_EMAIL") || "admin@admin.com";
   let password = Deno.env.get("INIT_PASSWORD") || "admin";
@@ -69,7 +69,6 @@ const init = async () => {
       WHERE NOT EXISTS (SELECT 1 FROM users_roles);
   `;
 
-
   try {
     await transaction.begin();
     await transaction.queryObject(query1);
@@ -78,7 +77,7 @@ const init = async () => {
     await transaction.queryObject(query4);
     await transaction.queryObject(query5);
     await transaction.queryObject(query6);
-    await transaction.commit()
+    await transaction.commit();
   } catch (error) {
     console.log(error);
     await transaction.rollback();
@@ -86,6 +85,6 @@ const init = async () => {
   } finally {
     client.release();
   }
-}
+};
 
 export default init;

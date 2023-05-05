@@ -1,4 +1,4 @@
-import {Context, generate, State} from "../../deps.ts";
+import { Context, generate, State } from "../../deps.ts";
 
 /**
  * requestId middleware
@@ -21,4 +21,4 @@ const requestIdMiddleware = async (
   ctx.response.headers.set("X-Request-Id", requestId);
 };
 
-export {requestIdMiddleware};
+export { requestIdMiddleware };
